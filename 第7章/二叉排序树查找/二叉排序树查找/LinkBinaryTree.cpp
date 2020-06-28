@@ -41,6 +41,15 @@ Status inOrderTraverse(LinkBinaryTree binaryTree){ //中序遍历
         return SUCCESS;
     }
 }
+LinkBinaryNode* firstOfInOrderTraverse(LinkBinaryTree binaryTree){ //查找中序遍历中的第一节点
+    if(binaryTree==NULL){
+        return binaryTree;
+    }else{
+        LinkBinaryNode *lnode=firstOfInOrderTraverse(binaryTree->lchild);
+        if(lnode!=NULL)return lnode;
+        else return binaryTree;
+    }
+}
 Status createElemTypeList(ElemType dataList[],int length){ //创建数据列表
     int i;
     for(i=0;i<length;i++){
@@ -75,4 +84,41 @@ Status printBinaryNodeList(LinkBinaryNode binaryNodeList[],int length){ //输出
         printf("%d %s\n",binaryNodeList[i].data.key,binaryNodeList[i].data.name);
       }
     return SUCCESS;
+}
+LinkBinaryTree SearchLinkBinaryTree(LinkBinaryTree binaryTree,int key){  //二叉排序树的递归查找
+    if(!binaryTree || key==binaryTree->data.key)return binaryTree;
+    else{
+        if(key<binaryTree->data.key)return SearchLinkBinaryTree(binaryTree->lchild, key);
+        else return SearchLinkBinaryTree(binaryTree->rchild, key);
+    }
+}
+Status removeBinaryNode(LinkBinaryTree binaryTree,int key){// 在二叉排序中摘除节点
+    LinkBinaryTree parent=binaryTree; //父母节点
+    while(key!=binaryTree->data.key && binaryTree!=NULL){
+        parent=binaryTree;
+        if(key<binaryTree->data.key)binaryTree=binaryTree->lchild;
+        else binaryTree=binaryTree->rchild;
+    }//查找与关键字匹配的节点
+    if(binaryTree!=NULL){
+        if(!binaryTree->lchild && !binaryTree->rchild){ //如果是叶子节点，直接删除
+            if(parent->lchild==binaryTree)parent->lchild=NULL;
+            else parent->rchild=NULL;
+        }
+        if(binaryTree->lchild && !binaryTree->rchild){ //如果是只有左孩子的节点，那就用左孩子顶替当前节点的位置
+            if(parent->lchild==binaryTree)parent->lchild=binaryTree->lchild;
+            else parent->rchild=binaryTree->lchild;
+        }
+        if(binaryTree->rchild && !binaryTree->lchild){ //如果是只有右孩子的节点，那就用右孩子顶替当前节点的位置
+            if(parent->lchild==binaryTree)parent->lchild=binaryTree->rchild;
+            else parent->rchild=binaryTree->rchild;
+        }
+        if(binaryTree->lchild && binaryTree->rchild){ //如果既有左孩子，又有右孩子
+            LinkBinaryNode *node=firstOfInOrderTraverse(binaryTree->rchild); //查找要删除的节点的前驱节点，也就是后继节点
+            removeBinaryNode(binaryTree, node->data.key); //摘除这个后继节点
+            if(parent->lchild==binaryTree)parent->lchild=node; //把 这个节点 挂接到 当前要删除节点的父母节点 中
+            else parent->rchild=node;
+        }
+        return SUCCESS;
+    }
+    return FAIL;
 }
