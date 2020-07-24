@@ -1,9 +1,9 @@
 //
 //  SqList.cpp
-//  线性表的查找
+//  散列表的查找
 //
-//  Created by 熊智宏 on 2020/5/13.
-//  Copyright © 2020 熊智宏. All rights reserved.
+//  Created by 熊智宏 on 2020/7/24.
+//  Copyright © 2020 wisyoong. All rights reserved.
 //
 
 #include "SqList.hpp"
@@ -90,7 +90,7 @@ Status printSqList(SqList sqList){//输出线性表
     int i;
     for(i=1;i<=sqList.length;i++){
         ElemType column=sqList.baseAddress[i];
-        printf("%s,%s\n",column.key,column.name);
+        printf("%d,%s\n",column.key,column.name);
     }
     printf("顺序表输出成功\n");
     return SUCCESS;
@@ -157,5 +157,3 @@ int recursiveBinarySearch(SqList sqList,KeyType key,int low,int high){
     }
     return 0;
 }
-
-
