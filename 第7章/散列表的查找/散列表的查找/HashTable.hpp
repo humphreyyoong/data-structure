@@ -17,7 +17,10 @@ typedef struct{
 
 int hashFunction(int key); //散列函数
 Status initHashTable(HashTable &hashTable,SqList &sqList); //初始化散列表
+Status createHashTableByOpenAddressMethod(HashTable &hashTable,SqList &sqList); //通过开放地址法创建散列表
+Status createHashTableBySecondDetectionMethod(HashTable &hashTable,SqList &sqList); //通过二次探测法创建散列表
 Status printHashTable(HashTable &hashTable); //输出散列表
-int searchHashTable(HashTable &hashTable,KeyType key); //在散列表中查找
+int searchHashTableByOpenAddressMethod(HashTable &hashTable,KeyType key); //通过开放地址法在散列表中查找
+int searchHashTableBySecondDetectionMethod(HashTable &hashTable,KeyType key); //通过开放地址法在散列表中查找
 #endif /* HashTable_hpp */
 

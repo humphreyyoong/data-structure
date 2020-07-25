@@ -38,6 +38,8 @@ int main(int argc, const char * argv[]) {
     //创建散列表并输出
     HashTable hashTable;
     initHashTable(hashTable, sqList);
+    //createHashTableByOpenAddressMethod(hashTable, sqList); //通过开放地址法创建散列表
+    createHashTableBySecondDetectionMethod(hashTable, sqList); //通过二次探测法创建散列表
     printHashTable(hashTable);
     printf("\n");
     
@@ -45,6 +47,7 @@ int main(int argc, const char * argv[]) {
     int key;
     printf("请输入你要查找数据的主键:");
     scanf("%d",&key);
-    key=searchHashTable(hashTable, key);
+    //key=searchHashTableByOpenAddressMethod(hashTable, key); //通过开放地址法在散列表中查找
+    key=searchHashTableBySecondDetectionMethod(hashTable, key); //通过开放地址法在散列表中查找
     printf("该数据在散列表的下标是:%d\n",key);
 }
