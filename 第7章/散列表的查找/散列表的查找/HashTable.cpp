@@ -7,8 +7,13 @@
 //
 
 #include "HashTable.hpp"
+
 int hashFunction(int key){ //散列函数
-    return key%7;
+    return key%11;
+}
+int pseudoRandomNumber(int next){                        // 生成伪随机数
+    next = next * 1103515245 + 12345;
+    return (unsigned int) (next / 65536) % 32768;
 }
 Status initHashTable(HashTable &hashTable,SqList &sqList){ //初始化散列表
     hashTable.baseAddress=new ElemType[sqList.length];
@@ -20,11 +25,12 @@ Status initHashTable(HashTable &hashTable,SqList &sqList){ //初始化散列表
     return SUCCESS;
 }
 Status createHashTableByOpenAddressMethod(HashTable &hashTable,SqList &sqList){ //通过开放地址法创建散列表
-    int i,index;
+    int i,j,index;
     for(i=1;i<=sqList.length;i++){ //把数据填入散列表中
         index=hashFunction(sqList.baseAddress[i].key);
-        while(hashTable.baseAddress[index].key!=-1){ //如果当前下标指向的空间已经有数据，则选择下一个下标
-               index=hashFunction(index+1);
+        for(j=0;j<sqList.length;j++){
+            if(hashTable.baseAddress[index].key==-1)break; //如果当前的下标的主键与想查找的下标一致则停止
+            index=hashFunction(index+1);
         }
         hashTable.baseAddress[index]=sqList.baseAddress[i]; //把顺序表中的数据复制到散列表中
     }
@@ -44,6 +50,19 @@ Status createHashTableBySecondDetectionMethod(HashTable &hashTable,SqList &sqLis
     }
     return SUCCESS;
 }
+Status createHashTableByPseudoRandomDetectionMethod(HashTable &hashTable,SqList &sqList){ //通过伪随机探测法创建散列表
+     int i,j,d,index;
+     for(i=1;i<=sqList.length;i++){ //把数据填入散列表中
+         index=hashFunction(sqList.baseAddress[i].key);
+         for(j=0;j<sqList.length;j++){
+             if(hashTable.baseAddress[index].key==-1)break; //如果当前的下标的主键与想查找的下标一致则停止
+             d=pseudoRandomNumber(j); //生成伪随机数
+             index=hashFunction(index+d); //使用当前下标+伪随机数来处理冲突
+         }
+         hashTable.baseAddress[index]=sqList.baseAddress[i]; //把顺序表中的数据复制到散列表中
+     }
+     return SUCCESS;
+}
 Status printHashTable(HashTable &hashTable){//输出散列表
     int i;
     for(i=0;i<hashTable.length;i++){
@@ -54,15 +73,12 @@ Status printHashTable(HashTable &hashTable){//输出散列表
     return SUCCESS;
 }
 int searchHashTableByOpenAddressMethod(HashTable &hashTable,KeyType key){//在散列表中查找
-    int index=hashFunction(key);
-    int i=0;
-    while(hashTable.baseAddress[index].key!=key){ //如果当前的下标的主键与想查找的下标不一致则继续查找
+    int i,index=hashFunction(key);
+    for(i=0;i<hashTable.length;i++){
+        if(hashTable.baseAddress[index].key==key)return index;; //如果当前的下标的主键与想查找的下标不一致则继续查找
         index=hashFunction(index+1);
-        if(i>=hashTable.length){
-            return -1;
-        }
     }
-    return index;
+    return -1;
 }
 int searchHashTableBySecondDetectionMethod(HashTable &hashTable,KeyType key){ //通过开放地址法在散列表中查找
     int i,index=key;
@@ -73,4 +89,13 @@ int searchHashTableBySecondDetectionMethod(HashTable &hashTable,KeyType key){ //
         if(hashTable.baseAddress[index].key==key)break;  //如果下标为 i的平方的负数 的地方的数据的主键 与 所给的主键 相等则停止循环
     }
     return index;
+}
+int searchHashTableByPseudoRandomDetectionMethod(HashTable &hashTable,KeyType key){
+    int i,d,index=hashFunction(key);
+    for(i=0;i<hashTable.length;i++){
+        if(hashTable.baseAddress[index].key==key)return index;; //如果当前的下标的主键与想查找的下标一致则停止查找
+        d=pseudoRandomNumber(i); //生成伪随机数
+        index=hashFunction(index+d); //使用当前下标+伪随机数来处理冲突
+    }
+    return -1;
 }
