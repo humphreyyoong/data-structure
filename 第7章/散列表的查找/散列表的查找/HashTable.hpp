@@ -10,6 +10,7 @@
 #define HashTable_hpp
 #include "SqList.hpp"
 #include "global.h"
+#include "AdjacencyList.hpp"
 typedef struct{
     ElemType *baseAddress;
     int length;
@@ -25,5 +26,5 @@ Status printHashTable(HashTable &hashTable); //输出散列表
 int searchHashTableByOpenAddressMethod(HashTable &hashTable,KeyType key); //通过开放地址法在散列表中查找
 int searchHashTableBySecondDetectionMethod(HashTable &hashTable,KeyType key); //通过开放地址法在散列表中查找
 int searchHashTableByPseudoRandomDetectionMethod(HashTable &hashTable,KeyType key); //通过随机探测法在散列表中查找
-#endif /* HashTable_hpp */
+#endif /* HashTable_hpp */ 
 

@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		181563DC24C967AD0020BA7A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181563DB24C967AD0020BA7A /* main.cpp */; };
 		181563E824C96A7D0020BA7A /* HashTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181563E624C96A7D0020BA7A /* HashTable.cpp */; };
-		181563EB24CA815B0020BA7A /* SqList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181563E924CA815B0020BA7A /* SqList.cpp */; };
-		18A608F124CFB05E005081BC /* AdjacencyList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A608EF24CFB05E005081BC /* AdjacencyList.cpp */; };
+		18A6092824CFEE45005081BC /* LinkList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A6092624CFEE45005081BC /* LinkList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,15 +25,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		181563D824C967AD0020BA7A /* 散列表的查找 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "散列表的查找"; sourceTree = BUILT_PRODUCTS_DIR; };
+		181563D824C967AD0020BA7A /* 链地址法 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "链地址法"; sourceTree = BUILT_PRODUCTS_DIR; };
 		181563DB24C967AD0020BA7A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		181563E524C969D50020BA7A /* global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = global.h; sourceTree = "<group>"; };
 		181563E624C96A7D0020BA7A /* HashTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HashTable.cpp; sourceTree = "<group>"; };
 		181563E724C96A7D0020BA7A /* HashTable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HashTable.hpp; sourceTree = "<group>"; };
-		181563E924CA815B0020BA7A /* SqList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SqList.cpp; sourceTree = "<group>"; };
-		181563EA24CA815B0020BA7A /* SqList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SqList.hpp; sourceTree = "<group>"; };
-		18A608EF24CFB05E005081BC /* AdjacencyList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdjacencyList.cpp; sourceTree = "<group>"; };
-		18A608F024CFB05E005081BC /* AdjacencyList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdjacencyList.hpp; sourceTree = "<group>"; };
+		18A6092624CFEE45005081BC /* LinkList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkList.cpp; sourceTree = "<group>"; };
+		18A6092724CFEE45005081BC /* LinkList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinkList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +48,7 @@
 		181563CF24C967AD0020BA7A = {
 			isa = PBXGroup;
 			children = (
-				181563DA24C967AD0020BA7A /* 散列表的查找 */,
+				181563DA24C967AD0020BA7A /* 链地址法 */,
 				181563D924C967AD0020BA7A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,32 +56,30 @@
 		181563D924C967AD0020BA7A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				181563D824C967AD0020BA7A /* 散列表的查找 */,
+				181563D824C967AD0020BA7A /* 链地址法 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		181563DA24C967AD0020BA7A /* 散列表的查找 */ = {
+		181563DA24C967AD0020BA7A /* 链地址法 */ = {
 			isa = PBXGroup;
 			children = (
 				181563E524C969D50020BA7A /* global.h */,
 				181563DB24C967AD0020BA7A /* main.cpp */,
 				181563E624C96A7D0020BA7A /* HashTable.cpp */,
 				181563E724C96A7D0020BA7A /* HashTable.hpp */,
-				181563E924CA815B0020BA7A /* SqList.cpp */,
-				181563EA24CA815B0020BA7A /* SqList.hpp */,
-				18A608EF24CFB05E005081BC /* AdjacencyList.cpp */,
-				18A608F024CFB05E005081BC /* AdjacencyList.hpp */,
+				18A6092624CFEE45005081BC /* LinkList.cpp */,
+				18A6092724CFEE45005081BC /* LinkList.hpp */,
 			);
-			path = "散列表的查找";
+			path = "链地址法";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		181563D724C967AD0020BA7A /* 散列表的查找 */ = {
+		181563D724C967AD0020BA7A /* 链地址法 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 181563DF24C967AD0020BA7A /* Build configuration list for PBXNativeTarget "散列表的查找" */;
+			buildConfigurationList = 181563DF24C967AD0020BA7A /* Build configuration list for PBXNativeTarget "链地址法" */;
 			buildPhases = (
 				181563D424C967AD0020BA7A /* Sources */,
 				181563D524C967AD0020BA7A /* Frameworks */,
@@ -94,9 +89,9 @@
 			);
 			dependencies = (
 			);
-			name = "散列表的查找";
+			name = "链地址法";
 			productName = "散列表的查找";
-			productReference = 181563D824C967AD0020BA7A /* 散列表的查找 */;
+			productReference = 181563D824C967AD0020BA7A /* 链地址法 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 181563D324C967AD0020BA7A /* Build configuration list for PBXProject "散列表的查找" */;
+			buildConfigurationList = 181563D324C967AD0020BA7A /* Build configuration list for PBXProject "链地址法" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				181563D724C967AD0020BA7A /* 散列表的查找 */,
+				181563D724C967AD0020BA7A /* 链地址法 */,
 			);
 		};
 /* End PBXProject section */
@@ -138,8 +133,7 @@
 			files = (
 				181563DC24C967AD0020BA7A /* main.cpp in Sources */,
 				181563E824C96A7D0020BA7A /* HashTable.cpp in Sources */,
-				181563EB24CA815B0020BA7A /* SqList.cpp in Sources */,
-				18A608F124CFB05E005081BC /* AdjacencyList.cpp in Sources */,
+				18A6092824CFEE45005081BC /* LinkList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +268,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		181563D324C967AD0020BA7A /* Build configuration list for PBXProject "散列表的查找" */ = {
+		181563D324C967AD0020BA7A /* Build configuration list for PBXProject "链地址法" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				181563DD24C967AD0020BA7A /* Debug */,
@@ -283,7 +277,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		181563DF24C967AD0020BA7A /* Build configuration list for PBXNativeTarget "散列表的查找" */ = {
+		181563DF24C967AD0020BA7A /* Build configuration list for PBXNativeTarget "链地址法" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				181563E024C967AD0020BA7A /* Debug */,
