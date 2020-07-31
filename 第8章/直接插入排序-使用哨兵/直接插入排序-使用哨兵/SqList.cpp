@@ -35,16 +35,17 @@ int insertElem(SqList &sqList,int index,ElemType elem){
         return FAIL;
     }
 }
-Status directInsertionSort(SqList &sqList){ //直接插入排序
-    int i,j,index;
+Status directInsertionSortByUseSentry(SqList &sqList){ //使用了哨兵的直接插入排序
+    int i,j,k;
     for(i=2;i<=sqList.length;i++){ //遍历未排序的数据元素
-        for(j=i-1,index=i;j>=1;j--){ //遍历已排序的数据元素
-            if(sqList.baseAddress[index].key<sqList.baseAddress[j].key){ //如果 当前未排序的数据元素 比 当前的已排序的数据 小，则插入
-                ElemType temp=sqList.baseAddress[index];
-                sqList.baseAddress[index]=sqList.baseAddress[j];
-                sqList.baseAddress[j]=temp;
-                index--; //当前未排序的数据元素的下标
-            }else break;
+        sqList.baseAddress[0]=sqList.baseAddress[i];
+        for(j=i-1,k=i;k>=1;k--,j--){ //遍历已排序的数据元素
+            if(sqList.baseAddress[0].key<sqList.baseAddress[j].key){ //如果 哨兵 比 当前已排序的数据元素 小，则把已排序的数据元素移动到k位置上
+                sqList.baseAddress[k]=sqList.baseAddress[j];
+            }else{ //如果 哨兵 比 当前已排序的数据元素 大，则把哨兵直接插到k位置上
+                sqList.baseAddress[k]=sqList.baseAddress[0];
+                break;
+            }
         }
     }
     return SUCCESS;
