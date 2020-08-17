@@ -10,6 +10,5 @@
 * Xcode
 
 ## 参考资料
-[[1] 严蔚敏.数据结构：C语言版（第2版）[M].北京：人民邮电出版社，2015.](https://item.jd.com/12320030.html)
-[[2]王卓.数据结构与算法基础](https://www.bilibili.com/read/cv3285768)
-
+[[1] 严蔚敏.数据结构：C语言版（第2版）[M].北京：人民邮电出版社，2015.](https://item.jd.com/12320030.html) 
+[[2] 王卓.数据结构与算法基础.](https://www.bilibili.com/read/cv3285768)
